@@ -1,17 +1,13 @@
-var num = process.argv.slice(2);
-num = Number(num);
-
-rollingDice = function(num){
-  var diceResults = "";
-  for (var i = 0; i < num; i++) {
-    var resultOfEachDice = "";
-    resultOfEachDice = Math.floor((Math.random() * 6) + 1);
-    diceResults += resultOfEachDice + ", ";
+function diceRoller(number) {
+  var randomNumber = [];
+  for (var i = 0; i < number; i++) {
+    randomNumber.push(Math.floor(Math.random() * 7));
   }
-  var lastComma = diceResults.lastIndexOf(", ");
-  diceResults = diceResults.slice(0, lastComma);
-
-  return diceResults;
+  return "rolled " + number + " times: " + randomNumber.join(",");
 }
 
-console.log("Rolled " + num + " dice: " + rollingDice(num));
+
+var args = process.argv;
+args.splice(0, 2);
+
+console.log(diceRoller(Number(args)));
